@@ -37,7 +37,14 @@ public class AlertTrigger {
         	context.getLogger().info("connecting to alert service");
     		URL url = new URL("http://localhost:9090/getAlert/");
     		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-    		conn.setRequestMethod("GET");
+    		conn.setRequestMethod("POST");
+    		
+    		String content="";
+    		conn.setDoOutput(true);
+    		OutputStream os=conn.getOutputStream();
+    		os.write(content.getBytes());
+    		os.flush();
+    		os.close();
     		//conn.setRequestProperty("Accept", "application/json");
     		context.getLogger().info("connection completed..");
     		
